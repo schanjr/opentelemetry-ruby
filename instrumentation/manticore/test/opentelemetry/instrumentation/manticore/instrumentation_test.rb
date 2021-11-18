@@ -42,7 +42,7 @@ describe OpenTelemetry::Instrumentation::Manticore::Instrumentation do
     end
 
     it 'after request with success code' do
-      ::Manticore.get('http://username:password@example.com/success')
+      ::Manticore.get('http://example.com/success')
 
       _(exporter.finished_spans.size).must_equal 1
       _(span.name).must_equal 'HTTP GET'
@@ -58,7 +58,7 @@ describe OpenTelemetry::Instrumentation::Manticore::Instrumentation do
 
     it 'after request with failure code' do
       expect do
-        ::Manticore.get('http://username:password@example.com/failure')
+        ::Manticore.get('http://example.com/failure')
       end.must_raise Manticore::InternalServerError
 
       _(exporter.finished_spans.size).must_equal 1
