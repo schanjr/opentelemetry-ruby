@@ -7,7 +7,7 @@ require 'manticore'
 Bundler.require
 
 OpenTelemetry::SDK.configure do |c|
-  c.use 'OpenTelemetry::Instrumentation::Manticore'
+  c.use 'OpenTelemetry::Instrumentation::Manticore', {'record_request_headers_list'=>['Connection']}
   c.add_span_processor(
     OpenTelemetry::SDK::Trace::Export::SimpleSpanProcessor.new(
       OpenTelemetry::SDK::Trace::Export::ConsoleSpanExporter.new

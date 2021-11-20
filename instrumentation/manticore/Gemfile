@@ -14,6 +14,4 @@ gem 'opentelemetry-instrumentation-base', path: '../base'
 group :test do
   gem 'opentelemetry-common', path: '../../common'
   gem 'opentelemetry-sdk', path: '../../sdk'
-  gem 'pry-byebug'
-  gem 'byebug'
 end

@@ -7,10 +7,10 @@
 module OpenTelemetry
   module Instrumentation
     module Manticore
-      # The Instrumentation class contains logic to detect and install the Manticore instrumentation
+      # The Instrumentation class contains logic to detect dependencies and install the Manticore instrumentation
       class Instrumentation < OpenTelemetry::Instrumentation::Base
         present do
-          defined?(::Manticore::Client) && defined?(::Manticore::Response)
+          (defined?(::Manticore::Response) && RUBY_PLATFORM == 'java')
         end
 
         install do |_config|
